@@ -26,13 +26,15 @@ def start_bot():
 def send_message(chat_id: int,
                  text: str,
                  reply_markup=None, 
-                 disable_web_page_preview: bool = False):
+                 disable_web_page_preview: bool = False,
+                 disable_notification: bool = True):
 
     try:
         bot.send_message(chat_id=chat_id,
                          text=text,
                          reply_markup=reply_markup,
-                         disable_web_page_preview=disable_web_page_preview)
+                         disable_web_page_preview=disable_web_page_preview,
+                         disable_notification=disable_notification)
 
     except Exception as e:
         log.error(f'Error in send_message cause - {e}, chat_id - {chat_id}')
