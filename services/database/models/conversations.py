@@ -33,3 +33,12 @@ def add_to_body_new_response(conversation_id: str,
     conversation.body['chat'] = body
     conversation.save()
 
+
+def get_all_user_conversations(user_id: int) -> tuple[Conversations]:
+    return Conversations.filter(Conversations.user_id == user_id)
+
+
+def get_conversation_openai_id(conversation_id_in_db: int) -> str:
+    return Conversations.get(Conversations.id == conversation_id_in_db).conversation_id
+
+
