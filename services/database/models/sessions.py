@@ -13,3 +13,8 @@ def create_user_session(user_id: int):
     if not Sessions.filter(Sessions.user_id == user_id):
         Sessions(user_id=user_id).save()
 
+
+def reset_current_conversation(user_id: int):
+    session = Sessions.get(Sessions.user_id == user_id)
+    session.data[CURRENT_CONVERSATION_ID] = None
+    session.save()

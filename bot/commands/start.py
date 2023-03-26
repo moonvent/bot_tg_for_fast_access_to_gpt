@@ -9,13 +9,14 @@ from services.database.models.sessions import create_user_session
 
 @bot.message_handler(commands=START_COMMANDS)
 def command_start(message: Message):
-    message_info = get_message_info(message=message)
+    chat_id = get_message_info(message=message).chat_id
+    start(chat_id=chat_id)
+    
+    
+def start(chat_id: int):
+    create_user_session(user_id=chat_id)
 
-    create_user_session(user_id=message_info.chat_id)
-
-    send_message(chat_id=message_info.chat_id,
+    send_message(chat_id=chat_id,
                  text=MAIN_MENU_TEXT,
                  reply_markup=markup_main_menu())
-
-    
 
