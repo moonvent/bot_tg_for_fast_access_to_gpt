@@ -3,6 +3,7 @@ import os
 from typing import Iterable, Union
 from telebot import TeleBot
 from telebot.types import BotCommand, CallbackQuery, Message, BotCommandScope
+from services.bot.commands.start_conversation import prepare_text_to_output_in_tg
 from services.logs import log
 
 

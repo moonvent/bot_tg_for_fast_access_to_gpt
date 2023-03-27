@@ -35,5 +35,4 @@ def send_question(text: str,
                              body=new_body + [{'role': response.choices[0].message.role,
                                                'content': response.choices[0].message.content}])
 
-    return response.choices[0].message.content
- 
+    return response.choices[0].message.content 

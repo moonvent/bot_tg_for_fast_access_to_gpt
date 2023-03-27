@@ -5,6 +5,7 @@ from bot.markups.to_main_menu import markup_to_main_menu
 
 from bot.util import MessageInfo, bot, get_message_info, schedule_message, send_message
 from services.bot.cancel_current_chatting import check_on_reset_word
+from services.bot.commands.start_conversation import prepare_text_to_output_in_tg
 from services.bot.filters_for_messages import start_conversation_message_filter
 from services.constants.commands import START_COMMANDS
 from services.constants.texts import I_THINK_TEXT, INPUT_QUESTION_TEXT, MAIN_MENU_TEXT, WAIT_FOR_NEXT_QUESTION
@@ -45,6 +46,7 @@ def send_ai_response(message_info: MessageInfo):
     text = send_question(user_id=message_info.chat_id,
                          text=message_info.text,
                          conversation_id=get_current_conversation(user_id=message_info.chat_id))
+    text = prepare_text_to_output_in_tg(text=text)
     schedule_message(chat_id=message_info.chat_id,
                      text=text,
                      method=get_next_question,

@@ -2,7 +2,7 @@ import os
 import cherrypy
 from telebot.types import Update
 from time import sleep
-from src.services.config import WEBHOOK_SSL_CERT, WEBHOOK_SSL_PRIV
+from services.config import WEBHOOK_SSL_CERT, WEBHOOK_SSL_PRIV
 from services.bot.webhook import generate_selfsigned_cert, get_ip
 from bot.util import bot
 

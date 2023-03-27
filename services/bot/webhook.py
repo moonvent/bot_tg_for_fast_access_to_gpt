@@ -2,6 +2,8 @@ from requests import get
 from datetime import datetime, timedelta
 import ipaddress
 
+from services.config import WEBHOOK_SSL_CERT, WEBHOOK_SSL_PRIV
+
 
 def get_ip() -> str:
     return get('https://api.ipify.org').content.decode('utf8')
@@ -64,10 +66,10 @@ def generate_selfsigned_cert(hostname, ip_addresses=None, key=None):
         encryption_algorithm=serialization.NoEncryption(),
     )
 
-    with open(config.WEBHOOK_SSL_CERT, 'wb') as cert_file:
+    with open(WEBHOOK_SSL_CERT, 'wb') as cert_file:
         cert_file.write(cert_pem)
 
-    with open(config.WEBHOOK_SSL_PRIV, 'wb') as key_file:
+    with open(WEBHOOK_SSL_PRIV, 'wb') as key_file:
         key_file.write(key_pem)
 
     return cert_pem, key_pem
