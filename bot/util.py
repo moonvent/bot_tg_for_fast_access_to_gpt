@@ -120,3 +120,21 @@ def callback_handler(message: CallbackQuery, callback: str) -> bool:
     return message.data.startswith(callback[:-2])
 
 
+# __USER_ID_TYPE = int
+# __NO_IMPACT_MESSAGE_TYPE = str
+#
+# empty_messages_data: dict[__USER_ID_TYPE, __NO_IMPACT_MESSAGE_TYPE] = {}   # если сообщение отправлено и не обработано, то говорим юзеру что что-то не так и выдвигаем мейн меню
+#
+#
+# @bot.message_handler()
+# def check_if_request_has_empty_impact(message: Message):
+#     message_info = get_message_info(message)
+#
+#     if message_info.text == empty_messages_data.get(message_info.chat_id):
+#         message.text = '/start'
+#         bot.process_new_messages([message])
+#
+#     else:
+#         ...
+#     
+

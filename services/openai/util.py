@@ -2,6 +2,7 @@ import os
 import openai
 
 from services.config import OPEN_AI_MODEL
+from services.constants.texts import ERROR_IN_ANSWER_GENERATION
 from services.database.models.conversations import add_to_body_new_response, create_conversation, get_previous_conversation_body
 from services.database.models.sessions import add_current_conversation_to_session
 from services.logs import log
@@ -22,7 +23,6 @@ def send_question(text: str,
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=new_body,
-            max_tokens=4096
         )
     except Exception as e:
         log.exception("Error in answer generation")
